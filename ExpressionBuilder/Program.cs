@@ -30,9 +30,9 @@ public class ExpressionBuilder
         return new List<User>
             {
                 new User{ ID = 1, FirstName = "Kevin", LastName = "Garnett"},
-                new User{ ID = 2, FirstName = "Stephen", LastName = "Curry"},
+                new User{ ID = 2, FirstName = "Gopriya", LastName = "Kota"},
                 new User{ ID = 3, FirstName = "Kevin", LastName = "Durant"},
-                 new User{ ID = 3, FirstName = "Dwayane", LastName = "Wade"},
+                 new User{ ID = 3, FirstName = "Pravallika", LastName = "T"},
                   new User{ ID = 4, FirstName = "Derrick", LastName = "Rose"},
                    new User{ ID = 5, FirstName = "Lebron", LastName = "James"},
                     new User{ ID = 6, FirstName = "JJ", LastName = "Bareia"}
@@ -75,8 +75,8 @@ public class ExpressionBuilder
 
     private static UnaryExpression GetValueExpression(string propertyName, string val, ParameterExpression param)
     {
-        var member = Expression.Property(param, propertyName);
-        var propertyType = ((PropertyInfo)member.Member).PropertyType;
+        var newmemeber = Expression.Property(param, propertyName);
+        var propertyType = ((PropertyInfo)newmemeber.Member).PropertyType;
         var converter = TypeDescriptor.GetConverter(propertyType);
 
         if (!converter.CanConvertFrom(typeof(string)))
