@@ -75,8 +75,8 @@ public class ExpressionBuilder
 
     private static UnaryExpression GetValueExpression(string propertyName, string val, ParameterExpression param)
     {
-        var member = Expression.Property(param, propertyName);
-        var propertyType = ((PropertyInfo)member.Member).PropertyType;
+        var oldmember = Expression.Property(param, propertyName);
+        var propertyType = ((PropertyInfo)oldmember.Member).PropertyType;
         var converter = TypeDescriptor.GetConverter(propertyType);
 
         if (!converter.CanConvertFrom(typeof(string)))
