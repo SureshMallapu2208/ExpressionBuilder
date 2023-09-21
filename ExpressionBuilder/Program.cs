@@ -77,12 +77,12 @@ public class ExpressionBuilder
     {
         var newmemeber = Expression.Property(param, propertyName);
         var propertyType = ((PropertyInfo)newmemeber.Member).PropertyType;
-        var converter = TypeDescriptor.GetConverter(propertyType);
+        var newconverter = TypeDescriptor.GetConverter(propertyType);
 
-        if (!converter.CanConvertFrom(typeof(string)))
+        if (!newconverter.CanConvertFrom(typeof(string)))
             throw new NotSupportedException();
 
-        var propertyValue = converter.ConvertFromInvariantString(val);
+        var propertyValue = newconverter.ConvertFromInvariantString(val);
         var constant = Expression.Constant(propertyValue);
         return Expression.Convert(constant, propertyType);
     }
